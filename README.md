@@ -30,6 +30,7 @@
 <summary><strong>Table of Contents</strong></summary>
 
 - [Executive Overview](#executive-overview)
+- [Screenshots](#screenshots)
 - [Problem](#problem)
 - [Solution](#solution)
 - [System Architecture](#system-architecture)
@@ -64,7 +65,6 @@
 - [Engineering Ownership](#engineering-ownership)
 - [Capabilities Demonstrated](#capabilities-demonstrated)
 - [Project Impact](#project-impact)
-- [Screenshots](#screenshots)
 - [Sample Code](#sample-code)
 - [Repository Notice](#repository-notice)
 - [Project Classification](#project-classification)
@@ -103,6 +103,83 @@ Supported operational domains include:
 - Offline mobile queue, camera attachments, barcode/QR scanner and GPS stamps
 
 The system was developed end-to-end: requirements, database design, modular API engineering, authentication & MFA, real-time infrastructure, mobile application (with offline), email templates, custom PDF generation, push notifications, asset/QR systems, SLA engine, and hardened LAN production deployment.
+
+---
+
+## Screenshots
+
+<p align="center">
+  <a href="https://almahmudpias.github.io/NSU-IT-Support-Center-Enterprise-Campus-IT-Operations-Platform/gallery.html">
+    <img src="screenshots/slideshow.gif" width="880" alt="NSU IT Support Center - screenshot slideshow"/>
+  </a>
+</p>
+
+<p align="center"><a href="https://almahmudpias.github.io/NSU-IT-Support-Center-Enterprise-Campus-IT-Operations-Platform/gallery.html"><b>▶ Open interactive gallery</b></a> &nbsp;·&nbsp; <sub>hover to zoom · full-screen viewer · ← → keys</sub></p>
+
+<table align="center">
+  <tr>
+    <td><a href="screenshots/web/1.png"><img src="screenshots/web/1.png" width="140"/></a></td>
+    <td><a href="screenshots/web/2.png"><img src="screenshots/web/2.png" width="140"/></a></td>
+    <td><a href="screenshots/web/3.png"><img src="screenshots/web/3.png" width="140"/></a></td>
+    <td><a href="screenshots/web/4.png"><img src="screenshots/web/4.png" width="140"/></a></td>
+    <td><a href="screenshots/web/5.png"><img src="screenshots/web/5.png" width="140"/></a></td>
+    <td><a href="screenshots/web/6.png"><img src="screenshots/web/6.png" width="140"/></a></td>
+  </tr>
+</table>
+
+<details>
+<summary><strong>View all 46 screenshots</strong></summary>
+
+<p align="center">
+  <a href="screenshots/web/1.png"><img src="screenshots/web/1.png" width="180"/></a>
+  <a href="screenshots/web/2.png"><img src="screenshots/web/2.png" width="180"/></a>
+  <a href="screenshots/web/3.png"><img src="screenshots/web/3.png" width="180"/></a>
+  <a href="screenshots/web/4.png"><img src="screenshots/web/4.png" width="180"/></a>
+  <a href="screenshots/web/5.png"><img src="screenshots/web/5.png" width="180"/></a>
+  <a href="screenshots/web/6.png"><img src="screenshots/web/6.png" width="180"/></a>
+  <a href="screenshots/web/7.png"><img src="screenshots/web/7.png" width="180"/></a>
+  <a href="screenshots/web/8.png"><img src="screenshots/web/8.png" width="180"/></a>
+  <a href="screenshots/web/9.png"><img src="screenshots/web/9.png" width="180"/></a>
+  <a href="screenshots/web/10.png"><img src="screenshots/web/10.png" width="180"/></a>
+  <a href="screenshots/web/11.png"><img src="screenshots/web/11.png" width="180"/></a>
+  <a href="screenshots/web/12.png"><img src="screenshots/web/12.png" width="180"/></a>
+  <a href="screenshots/web/13.png"><img src="screenshots/web/13.png" width="180"/></a>
+  <a href="screenshots/web/14.png"><img src="screenshots/web/14.png" width="180"/></a>
+  <a href="screenshots/web/15.png"><img src="screenshots/web/15.png" width="180"/></a>
+  <a href="screenshots/web/16.png"><img src="screenshots/web/16.png" width="180"/></a>
+  <a href="screenshots/web/17.png"><img src="screenshots/web/17.png" width="180"/></a>
+  <a href="screenshots/web/18.png"><img src="screenshots/web/18.png" width="180"/></a>
+  <a href="screenshots/web/19.png"><img src="screenshots/web/19.png" width="180"/></a>
+  <a href="screenshots/web/20.png"><img src="screenshots/web/20.png" width="180"/></a>
+  <a href="screenshots/web/21.png"><img src="screenshots/web/21.png" width="180"/></a>
+  <a href="screenshots/web/22.png"><img src="screenshots/web/22.png" width="180"/></a>
+  <a href="screenshots/web/23.png"><img src="screenshots/web/23.png" width="180"/></a>
+  <a href="screenshots/web/24.png"><img src="screenshots/web/24.png" width="180"/></a>
+  <a href="screenshots/web/25.png"><img src="screenshots/web/25.png" width="180"/></a>
+  <a href="screenshots/web/26.png"><img src="screenshots/web/26.png" width="180"/></a>
+  <a href="screenshots/web/27.png"><img src="screenshots/web/27.png" width="180"/></a>
+  <a href="screenshots/web/28.png"><img src="screenshots/web/28.png" width="180"/></a>
+  <a href="screenshots/web/29.png"><img src="screenshots/web/29.png" width="180"/></a>
+  <a href="screenshots/web/30.png"><img src="screenshots/web/30.png" width="180"/></a>
+  <a href="screenshots/web/31.png"><img src="screenshots/web/31.png" width="180"/></a>
+  <a href="screenshots/web/32.png"><img src="screenshots/web/32.png" width="180"/></a>
+  <a href="screenshots/web/33.png"><img src="screenshots/web/33.png" width="180"/></a>
+  <a href="screenshots/web/34.png"><img src="screenshots/web/34.png" width="180"/></a>
+  <a href="screenshots/web/35.png"><img src="screenshots/web/35.png" width="180"/></a>
+  <a href="screenshots/web/36.png"><img src="screenshots/web/36.png" width="180"/></a>
+  <a href="screenshots/web/37.png"><img src="screenshots/web/37.png" width="180"/></a>
+  <a href="screenshots/web/38.png"><img src="screenshots/web/38.png" width="180"/></a>
+  <a href="screenshots/web/39.png"><img src="screenshots/web/39.png" width="180"/></a>
+  <a href="screenshots/web/40.png"><img src="screenshots/web/40.png" width="180"/></a>
+  <a href="screenshots/web/41.png"><img src="screenshots/web/41.png" width="180"/></a>
+  <a href="screenshots/web/42.png"><img src="screenshots/web/42.png" width="180"/></a>
+  <a href="screenshots/web/43.png"><img src="screenshots/web/43.png" width="180"/></a>
+  <a href="screenshots/web/44.png"><img src="screenshots/web/44.png" width="180"/></a>
+  <a href="screenshots/web/45.png"><img src="screenshots/web/45.png" width="180"/></a>
+  <a href="screenshots/web/46.png"><img src="screenshots/web/46.png" width="180"/></a>
+</p>
+
+</details>
 
 ---
 
@@ -1238,83 +1315,6 @@ flowchart TD
 ```
 
 Engineers in the field receive push notifications the moment new tickets arrive and can continue working offline. Administrators see live ticket state and KPIs without refreshing. Event AV assignments trigger personalized emails only after approval. Monthly reports are generated and delivered as PDF attachments. Assets have permanent histories and QR labels. Every administrative action is permanently recorded. The system recovers automatically from process crashes and supports zero-downtime releases.
-
----
-
-## Screenshots
-
-<p align="center">
-  <a href="https://almahmudpias.github.io/NSU-IT-Support-Center-Enterprise-Campus-IT-Operations-Platform/gallery.html">
-    <img src="screenshots/slideshow.gif" width="880" alt="NSU IT Support Center - screenshot slideshow"/>
-  </a>
-</p>
-
-<p align="center"><sub>Click the slideshow to open the full gallery (use the ← → keys to navigate)</sub></p>
-
-<table align="center">
-  <tr>
-    <td><a href="screenshots/web/1.png"><img src="screenshots/web/1.png" width="140"/></a></td>
-    <td><a href="screenshots/web/2.png"><img src="screenshots/web/2.png" width="140"/></a></td>
-    <td><a href="screenshots/web/3.png"><img src="screenshots/web/3.png" width="140"/></a></td>
-    <td><a href="screenshots/web/4.png"><img src="screenshots/web/4.png" width="140"/></a></td>
-    <td><a href="screenshots/web/5.png"><img src="screenshots/web/5.png" width="140"/></a></td>
-    <td><a href="screenshots/web/6.png"><img src="screenshots/web/6.png" width="140"/></a></td>
-  </tr>
-</table>
-
-<details>
-<summary><strong>View all 46 screenshots</strong></summary>
-
-<p align="center">
-  <a href="screenshots/web/1.png"><img src="screenshots/web/1.png" width="180"/></a>
-  <a href="screenshots/web/2.png"><img src="screenshots/web/2.png" width="180"/></a>
-  <a href="screenshots/web/3.png"><img src="screenshots/web/3.png" width="180"/></a>
-  <a href="screenshots/web/4.png"><img src="screenshots/web/4.png" width="180"/></a>
-  <a href="screenshots/web/5.png"><img src="screenshots/web/5.png" width="180"/></a>
-  <a href="screenshots/web/6.png"><img src="screenshots/web/6.png" width="180"/></a>
-  <a href="screenshots/web/7.png"><img src="screenshots/web/7.png" width="180"/></a>
-  <a href="screenshots/web/8.png"><img src="screenshots/web/8.png" width="180"/></a>
-  <a href="screenshots/web/9.png"><img src="screenshots/web/9.png" width="180"/></a>
-  <a href="screenshots/web/10.png"><img src="screenshots/web/10.png" width="180"/></a>
-  <a href="screenshots/web/11.png"><img src="screenshots/web/11.png" width="180"/></a>
-  <a href="screenshots/web/12.png"><img src="screenshots/web/12.png" width="180"/></a>
-  <a href="screenshots/web/13.png"><img src="screenshots/web/13.png" width="180"/></a>
-  <a href="screenshots/web/14.png"><img src="screenshots/web/14.png" width="180"/></a>
-  <a href="screenshots/web/15.png"><img src="screenshots/web/15.png" width="180"/></a>
-  <a href="screenshots/web/16.png"><img src="screenshots/web/16.png" width="180"/></a>
-  <a href="screenshots/web/17.png"><img src="screenshots/web/17.png" width="180"/></a>
-  <a href="screenshots/web/18.png"><img src="screenshots/web/18.png" width="180"/></a>
-  <a href="screenshots/web/19.png"><img src="screenshots/web/19.png" width="180"/></a>
-  <a href="screenshots/web/20.png"><img src="screenshots/web/20.png" width="180"/></a>
-  <a href="screenshots/web/21.png"><img src="screenshots/web/21.png" width="180"/></a>
-  <a href="screenshots/web/22.png"><img src="screenshots/web/22.png" width="180"/></a>
-  <a href="screenshots/web/23.png"><img src="screenshots/web/23.png" width="180"/></a>
-  <a href="screenshots/web/24.png"><img src="screenshots/web/24.png" width="180"/></a>
-  <a href="screenshots/web/25.png"><img src="screenshots/web/25.png" width="180"/></a>
-  <a href="screenshots/web/26.png"><img src="screenshots/web/26.png" width="180"/></a>
-  <a href="screenshots/web/27.png"><img src="screenshots/web/27.png" width="180"/></a>
-  <a href="screenshots/web/28.png"><img src="screenshots/web/28.png" width="180"/></a>
-  <a href="screenshots/web/29.png"><img src="screenshots/web/29.png" width="180"/></a>
-  <a href="screenshots/web/30.png"><img src="screenshots/web/30.png" width="180"/></a>
-  <a href="screenshots/web/31.png"><img src="screenshots/web/31.png" width="180"/></a>
-  <a href="screenshots/web/32.png"><img src="screenshots/web/32.png" width="180"/></a>
-  <a href="screenshots/web/33.png"><img src="screenshots/web/33.png" width="180"/></a>
-  <a href="screenshots/web/34.png"><img src="screenshots/web/34.png" width="180"/></a>
-  <a href="screenshots/web/35.png"><img src="screenshots/web/35.png" width="180"/></a>
-  <a href="screenshots/web/36.png"><img src="screenshots/web/36.png" width="180"/></a>
-  <a href="screenshots/web/37.png"><img src="screenshots/web/37.png" width="180"/></a>
-  <a href="screenshots/web/38.png"><img src="screenshots/web/38.png" width="180"/></a>
-  <a href="screenshots/web/39.png"><img src="screenshots/web/39.png" width="180"/></a>
-  <a href="screenshots/web/40.png"><img src="screenshots/web/40.png" width="180"/></a>
-  <a href="screenshots/web/41.png"><img src="screenshots/web/41.png" width="180"/></a>
-  <a href="screenshots/web/42.png"><img src="screenshots/web/42.png" width="180"/></a>
-  <a href="screenshots/web/43.png"><img src="screenshots/web/43.png" width="180"/></a>
-  <a href="screenshots/web/44.png"><img src="screenshots/web/44.png" width="180"/></a>
-  <a href="screenshots/web/45.png"><img src="screenshots/web/45.png" width="180"/></a>
-  <a href="screenshots/web/46.png"><img src="screenshots/web/46.png" width="180"/></a>
-</p>
-
-</details>
 
 ---
 
