@@ -1243,57 +1243,54 @@ Engineers in the field receive push notifications the moment new tickets arrive 
 
 ## Screenshots
 
-<details>
-<summary><strong>Web Portal — 1 to 12</strong></summary>
-<br>
-
-| | | |
-|:---:|:---:|:---:|
-| <img src="screenshots/web/1.png" width="280"/> | <img src="screenshots/web/2.png" width="280"/> | <img src="screenshots/web/3.png" width="280"/> |
-| <img src="screenshots/web/4.png" width="280"/> | <img src="screenshots/web/5.png" width="280"/> | <img src="screenshots/web/6.png" width="280"/> |
-| <img src="screenshots/web/7.png" width="280"/> | <img src="screenshots/web/8.png" width="280"/> | <img src="screenshots/web/9.png" width="280"/> |
-| <img src="screenshots/web/10.png" width="280"/> | <img src="screenshots/web/11.png" width="280"/> | <img src="screenshots/web/12.png" width="280"/> |
-
-</details>
-
-<details>
-<summary><strong>Web Portal — 13 to 24</strong></summary>
-<br>
-
-| | | |
-|:---:|:---:|:---:|
-| <img src="screenshots/web/13.png" width="280"/> | <img src="screenshots/web/14.png" width="280"/> | <img src="screenshots/web/15.png" width="280"/> |
-| <img src="screenshots/web/16.png" width="280"/> | <img src="screenshots/web/17.png" width="280"/> | <img src="screenshots/web/18.png" width="280"/> |
-| <img src="screenshots/web/19.png" width="280"/> | <img src="screenshots/web/20.png" width="280"/> | <img src="screenshots/web/21.png" width="280"/> |
-| <img src="screenshots/web/22.png" width="280"/> | <img src="screenshots/web/23.png" width="280"/> | <img src="screenshots/web/24.png" width="280"/> |
-
-</details>
-
-<details>
-<summary><strong>Web Portal — 25 to 36</strong></summary>
-<br>
-
-| | | |
-|:---:|:---:|:---:|
-| <img src="screenshots/web/25.png" width="280"/> | <img src="screenshots/web/26.png" width="280"/> | <img src="screenshots/web/27.png" width="280"/> |
-| <img src="screenshots/web/28.png" width="280"/> | <img src="screenshots/web/29.png" width="280"/> | <img src="screenshots/web/30.png" width="280"/> |
-| <img src="screenshots/web/31.png" width="280"/> | <img src="screenshots/web/32.png" width="280"/> | <img src="screenshots/web/33.png" width="280"/> |
-| <img src="screenshots/web/34.png" width="280"/> | <img src="screenshots/web/35.png" width="280"/> | <img src="screenshots/web/36.png" width="280"/> |
-
-</details>
-
-<details>
-<summary><strong>Web Portal — 37 to 46</strong></summary>
-<br>
-
-| | | |
-|:---:|:---:|:---:|
-| <img src="screenshots/web/37.png" width="280"/> | <img src="screenshots/web/38.png" width="280"/> | <img src="screenshots/web/39.png" width="280"/> |
-| <img src="screenshots/web/40.png" width="280"/> | <img src="screenshots/web/41.png" width="280"/> | <img src="screenshots/web/42.png" width="280"/> |
-| <img src="screenshots/web/43.png" width="280"/> | <img src="screenshots/web/44.png" width="280"/> | <img src="screenshots/web/45.png" width="280"/> |
-| <img src="screenshots/web/46.png" width="280"/> | | |
-
-</details>
+<p align="center">
+  <img src="screenshots/web/1.png" width="180"/>
+  <img src="screenshots/web/2.png" width="180"/>
+  <img src="screenshots/web/3.png" width="180"/>
+  <img src="screenshots/web/4.png" width="180"/>
+  <img src="screenshots/web/5.png" width="180"/>
+  <img src="screenshots/web/6.png" width="180"/>
+  <img src="screenshots/web/7.png" width="180"/>
+  <img src="screenshots/web/8.png" width="180"/>
+  <img src="screenshots/web/9.png" width="180"/>
+  <img src="screenshots/web/10.png" width="180"/>
+  <img src="screenshots/web/11.png" width="180"/>
+  <img src="screenshots/web/12.png" width="180"/>
+  <img src="screenshots/web/13.png" width="180"/>
+  <img src="screenshots/web/14.png" width="180"/>
+  <img src="screenshots/web/15.png" width="180"/>
+  <img src="screenshots/web/16.png" width="180"/>
+  <img src="screenshots/web/17.png" width="180"/>
+  <img src="screenshots/web/18.png" width="180"/>
+  <img src="screenshots/web/19.png" width="180"/>
+  <img src="screenshots/web/20.png" width="180"/>
+  <img src="screenshots/web/21.png" width="180"/>
+  <img src="screenshots/web/22.png" width="180"/>
+  <img src="screenshots/web/23.png" width="180"/>
+  <img src="screenshots/web/24.png" width="180"/>
+  <img src="screenshots/web/25.png" width="180"/>
+  <img src="screenshots/web/26.png" width="180"/>
+  <img src="screenshots/web/27.png" width="180"/>
+  <img src="screenshots/web/28.png" width="180"/>
+  <img src="screenshots/web/29.png" width="180"/>
+  <img src="screenshots/web/30.png" width="180"/>
+  <img src="screenshots/web/31.png" width="180"/>
+  <img src="screenshots/web/32.png" width="180"/>
+  <img src="screenshots/web/33.png" width="180"/>
+  <img src="screenshots/web/34.png" width="180"/>
+  <img src="screenshots/web/35.png" width="180"/>
+  <img src="screenshots/web/36.png" width="180"/>
+  <img src="screenshots/web/37.png" width="180"/>
+  <img src="screenshots/web/38.png" width="180"/>
+  <img src="screenshots/web/39.png" width="180"/>
+  <img src="screenshots/web/40.png" width="180"/>
+  <img src="screenshots/web/41.png" width="180"/>
+  <img src="screenshots/web/42.png" width="180"/>
+  <img src="screenshots/web/43.png" width="180"/>
+  <img src="screenshots/web/44.png" width="180"/>
+  <img src="screenshots/web/45.png" width="180"/>
+  <img src="screenshots/web/46.png" width="180"/>
+</p>
 
 ---
 
