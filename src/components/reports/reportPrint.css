@@ -1,0 +1,478 @@
+/* Professional print document — separate from the dark app chrome */
+
+.report-preview-screen {
+  background: #d1d5db;
+  min-height: 100%;
+}
+
+.report-preview-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #0B0F19;
+  border-bottom: 1px solid #1F2937;
+}
+
+/* A4 page canvas */
+.printable-report {
+  --ink: #0f172a;
+  --muted: #475569;
+  --line: #cbd5e1;
+  --line-soft: #e2e8f0;
+  --accent: #4338ca;
+  --accent-soft: #eef2ff;
+  --paper: #ffffff;
+  --num: #0f172a;
+
+  background: var(--paper);
+  color: var(--ink);
+  max-width: 210mm;
+  margin: 0 auto 24px;
+  padding: 18mm 16mm 16mm;
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.12);
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.5;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.printable-report.landscape-doc {
+  max-width: 297mm;
+  padding: 14mm 16mm;
+}
+
+/* ——— Header ——— */
+.pr-org {
+  font-size: 9pt;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 2px;
+}
+
+.pr-center {
+  font-size: 10pt;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 14px;
+}
+
+.pr-title {
+  font-size: 20pt;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0 0 4px;
+}
+
+.pr-subtitle {
+  font-size: 11pt;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0 0 16px;
+}
+
+.pr-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding-bottom: 14px;
+  border-bottom: 2.5px solid var(--ink);
+  margin-bottom: 14px;
+}
+
+.pr-header-right {
+  text-align: right;
+  font-size: 8.5pt;
+  color: var(--muted);
+  line-height: 1.55;
+  white-space: nowrap;
+}
+
+.pr-header-right strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Meta block */
+.pr-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 28px;
+  margin-bottom: 18px;
+  padding: 10px 12px;
+  background: #f8fafc;
+  border: 1px solid var(--line-soft);
+}
+
+.pr-meta-row {
+  display: flex;
+  gap: 8px;
+  font-size: 9pt;
+  color: var(--muted);
+}
+
+.pr-meta-row .k {
+  min-width: 7.5rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.pr-meta-row .v {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Section headings */
+.pr-h2 {
+  font-size: 10pt;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 0 0 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--line);
+}
+
+.pr-section {
+  margin-bottom: 20px;
+}
+
+.pr-section.avoid-break {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.pr-lead {
+  font-size: 10pt;
+  color: #334155;
+  margin: 0 0 12px;
+  line-height: 1.55;
+  max-width: 100%;
+}
+
+.pr-caption {
+  font-size: 8pt;
+  color: #64748b;
+  margin: 6px 0 0;
+  line-height: 1.4;
+}
+
+/* Executive KPI strip — editorial, not dashboard cards */
+.pr-kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--line);
+  margin-bottom: 8px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.pr-kpi {
+  padding: 12px 14px;
+  border-right: 1px solid var(--line-soft);
+  min-height: 64px;
+}
+
+.pr-kpi:last-child {
+  border-right: none;
+}
+
+.pr-kpi .lbl {
+  font-size: 7.5pt;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin: 0 0 4px;
+}
+
+.pr-kpi .val {
+  font-size: 18pt;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--num);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.pr-kpi .hint {
+  font-size: 7.5pt;
+  color: #94a3b8;
+  margin-top: 3px;
+}
+
+.pr-kpi-strip.secondary .val {
+  font-size: 14pt;
+}
+
+/* Figures / charts */
+.pr-figures {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.pr-figure {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.pr-figure-title {
+  font-size: 8.5pt;
+  font-weight: 700;
+  color: #334155;
+  margin: 0 0 8px;
+}
+
+.pr-figure svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pr-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 6px;
+  font-size: 8pt;
+  color: #475569;
+}
+
+.pr-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pr-swatch {
+  width: 12px;
+  height: 3px;
+  display: inline-block;
+}
+
+/* Tables */
+.pr-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 8.5pt;
+  margin-top: 4px;
+}
+
+.pr-table thead {
+  display: table-header-group;
+}
+
+.pr-table th {
+  text-align: left;
+  font-size: 7.5pt;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #334155;
+  background: #f1f5f9;
+  border-bottom: 1.5px solid #94a3b8;
+  border-top: 1px solid var(--line);
+  padding: 7px 6px;
+}
+
+.pr-table td {
+  padding: 6px;
+  border-bottom: 1px solid var(--line-soft);
+  color: #1e293b;
+  vertical-align: top;
+  font-size: 8.5pt;
+}
+
+.pr-table tbody tr:nth-child(even) td {
+  background: #fafbfc;
+}
+
+.pr-table .num {
+  font-variant-numeric: tabular-nums;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 8pt;
+}
+
+.pr-table .group td {
+  background: #f1f5f9;
+  color: #1e293b;
+  font-weight: 700;
+  font-size: 8pt;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid var(--line);
+  padding-top: 8px;
+  padding-bottom: 6px;
+}
+
+.pr-table .right {
+  text-align: right;
+}
+
+.pr-empty {
+  text-align: center;
+  color: #64748b;
+  font-style: italic;
+  padding: 28px 12px;
+  border: 1px dashed var(--line);
+  font-size: 10pt;
+}
+
+/* Footer */
+/* footer styles replaced below */
+
+
+
+/* Screen-only note under document */
+.pr-screen-note {
+  text-align: center;
+  font-size: 11px;
+  color: #6b7280;
+  margin: 8px auto 32px;
+  max-width: 210mm;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 14mm 12mm 16mm;
+  }
+
+  @page landscape-page {
+    size: A4 landscape;
+    margin: 12mm;
+  }
+
+  html,
+  body,
+  #root {
+    background: #fff !important;
+    color: #0f172a !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  aside,
+  .report-preview-toolbar,
+  footer,
+  .md\:hidden,
+  .print-hide,
+  .pr-screen-note {
+    display: none !important;
+  }
+
+  .h-screen,
+  .flex-1.min-h-0,
+  .overflow-hidden,
+  .overflow-y-auto,
+  .custom-scroll {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .report-preview-screen {
+    background: #fff !important;
+  }
+
+  .printable-report {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .printable-report.landscape-doc {
+    page: landscape-page;
+  }
+
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+
+  .pr-kpi-strip,
+  .pr-figure,
+  .pr-section.avoid-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .pr-table tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+
+/* Executive one-page: denser spacing, no register */
+.printable-report.executive-mode {
+  padding: 12mm 14mm;
+}
+.printable-report.executive-mode .pr-section {
+  margin-bottom: 12px;
+}
+.printable-report.executive-mode .pr-kpi .val {
+  font-size: 16pt;
+}
+.printable-report.executive-mode .pr-title {
+  font-size: 16pt;
+}
+
+@media print {
+  .printable-report.landscape-doc {
+    page: landscape-page;
+  }
+  .printable-report:not(.landscape-doc) {
+    /* portrait is default @page */
+  }
+}
+
+
+.pr-footer {
+  margin-top: 28px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 7.5pt;
+  color: #94a3b8;
+}
+
+.pr-footer-main {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.pr-footer-credit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 7pt;
+  color: #a1a1aa;
+  letter-spacing: 0.02em;
+}
+
+.pr-footer strong {
+  color: #64748b;
+  font-weight: 600;
+}
+
+@media print {
+  .pr-page-num::after {
+    content: "Page " counter(page);
+  }
+}
