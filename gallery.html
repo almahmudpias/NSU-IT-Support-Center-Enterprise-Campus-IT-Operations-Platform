@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NSU IT Support Center - Gallery</title>
+<style>
+  :root { --bg:#0b1020; --panel:#121935; --accent:#6366f1; --text:#e5e7eb; --muted:#94a3b8; }
+  * { box-sizing:border-box; margin:0; }
+  body { background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+         height:100vh; display:flex; flex-direction:column; overflow:hidden; }
+  header { padding:14px 24px; display:flex; justify-content:space-between; align-items:center; background:var(--panel);
+           border-bottom:1px solid #1f2a52; }
+  header h1 { font-size:16px; font-weight:600; }
+  header span { color:var(--muted); font-size:13px; }
+  .stage { flex:1; position:relative; display:flex; align-items:center; justify-content:center; min-height:0; padding:16px 70px; }
+  .stage img { max-width:100%; max-height:100%; object-fit:contain; border-radius:10px;
+               box-shadow:0 20px 60px rgba(0,0,0,.55); transition:opacity .25s ease; }
+  .nav { position:absolute; top:50%; transform:translateY(-50%); width:48px; height:48px; border-radius:50%;
+         border:none; background:rgba(99,102,241,.85); color:#fff; font-size:22px; cursor:pointer; }
+  .nav:hover { background:var(--accent); }
+  #prev { left:12px; } #next { right:12px; }
+  .bar { display:flex; justify-content:center; gap:16px; align-items:center; padding:8px; color:var(--muted); font-size:13px; }
+  .bar button { background:none; border:1px solid #2a3768; color:var(--text); border-radius:6px; padding:4px 12px; cursor:pointer; }
+  .strip { display:flex; gap:8px; padding:10px 16px 14px; overflow-x:auto; background:var(--panel); border-top:1px solid #1f2a52; }
+  .strip img { height:64px; border-radius:6px; opacity:.5; cursor:pointer; flex:0 0 auto; border:2px solid transparent; }
+  .strip img:hover { opacity:.85; }
+  .strip img.active { opacity:1; border-color:var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <h1>NSU IT Support Center &mdash; Screenshot Gallery</h1>
+  <span>&larr; &rarr; keys to navigate &middot; Space: autoplay &middot; Esc: stop</span>
+</header>
+<div class="stage">
+  <button class="nav" id="prev" aria-label="Previous">&#10094;</button>
+  <img id="main" alt="Screenshot">
+  <button class="nav" id="next" aria-label="Next">&#10095;</button>
+</div>
+<div class="bar"><span id="count"></span><button id="play">Autoplay</button></div>
+<div class="strip" id="strip"></div>
+
+<script>
+  // Edit these two values if your files differ
+  const TOTAL = 46;
+  const PATH = n => `screenshots/web/${n}.png`;
+
+  const main = document.getElementById('main');
+  const strip = document.getElementById('strip');
+  const count = document.getElementById('count');
+  const play = document.getElementById('play');
+  let i = 0, timer = null;
+
+  for (let n = 1; n <= TOTAL; n++) {
+    const t = document.createElement('img');
+    t.src = PATH(n); t.loading = 'lazy'; t.alt = 'Screenshot ' + n;
+    t.onclick = () => show(n - 1);
+    strip.appendChild(t);
+  }
+
+  function show(idx) {
+    i = (idx + TOTAL) % TOTAL;
+    main.style.opacity = 0;
+    setTimeout(() => { main.src = PATH(i + 1); main.style.opacity = 1; }, 120);
+    count.textContent = `${i + 1} / ${TOTAL}`;
+    [...strip.children].forEach((c, k) => c.classList.toggle('active', k === i));
+    strip.children[i].scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+    new Image().src = PATH(((i + 1) % TOTAL) + 1); // preload next
+  }
+  const next = () => show(i + 1), prev = () => show(i - 1);
+  function stop() { clearInterval(timer); timer = null; play.textContent = 'Autoplay'; }
+  function toggle() {
+    if (timer) return stop();
+    timer = setInterval(next, 3000); play.textContent = 'Pause';
+  }
+
+  document.getElementById('next').onclick = () => { stop(); next(); };
+  document.getElementById('prev').onclick = () => { stop(); prev(); };
+  play.onclick = toggle;
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') { stop(); next(); }
+    else if (e.key === 'ArrowLeft') { stop(); prev(); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(TOTAL - 1);
+    else if (e.key === ' ') { e.preventDefault(); toggle(); }
+    else if (e.key === 'Escape') stop();
+  });
+  // touch swipe
+  let sx = null;
+  main.addEventListener('touchstart', e => sx = e.touches[0].clientX);
+  main.addEventListener('touchend', e => {
+    if (sx === null) return;
+    const dx = e.changedTouches[0].clientX - sx;
+    if (Math.abs(dx) > 40) { stop(); dx < 0 ? next() : prev(); }
+    sx = null;
+  });
+
+  show(0);
+</script>
+</body>
+</html>
