@@ -5,98 +5,187 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NSU IT Support Center - Gallery</title>
 <style>
-  :root { --bg:#0b1020; --panel:#121935; --accent:#6366f1; --text:#e5e7eb; --muted:#94a3b8; }
+  :root { --bg:#0b1020; --panel:#121935; --line:#1f2a52; --accent:#6366f1; --text:#e5e7eb; --muted:#94a3b8; }
   * { box-sizing:border-box; margin:0; }
-  body { background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-         height:100vh; display:flex; flex-direction:column; overflow:hidden; }
-  header { padding:14px 24px; display:flex; justify-content:space-between; align-items:center; background:var(--panel);
-           border-bottom:1px solid #1f2a52; }
-  header h1 { font-size:16px; font-weight:600; }
-  header span { color:var(--muted); font-size:13px; }
-  .stage { flex:1; position:relative; display:flex; align-items:center; justify-content:center; min-height:0; padding:16px 70px; }
-  .stage img { max-width:100%; max-height:100%; object-fit:contain; border-radius:10px;
-               box-shadow:0 20px 60px rgba(0,0,0,.55); transition:opacity .25s ease; }
-  .nav { position:absolute; top:50%; transform:translateY(-50%); width:48px; height:48px; border-radius:50%;
-         border:none; background:rgba(99,102,241,.85); color:#fff; font-size:22px; cursor:pointer; }
-  .nav:hover { background:var(--accent); }
-  #prev { left:12px; } #next { right:12px; }
-  .bar { display:flex; justify-content:center; gap:16px; align-items:center; padding:8px; color:var(--muted); font-size:13px; }
-  .bar button { background:none; border:1px solid #2a3768; color:var(--text); border-radius:6px; padding:4px 12px; cursor:pointer; }
-  .strip { display:flex; gap:8px; padding:10px 16px 14px; overflow-x:auto; background:var(--panel); border-top:1px solid #1f2a52; }
-  .strip img { height:64px; border-radius:6px; opacity:.5; cursor:pointer; flex:0 0 auto; border:2px solid transparent; }
-  .strip img:hover { opacity:.85; }
-  .strip img.active { opacity:1; border-color:var(--accent); }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+
+  /* ---------- page ---------- */
+  header { position:sticky; top:0; z-index:5; padding:18px 28px; background:rgba(18,25,53,.92); backdrop-filter:blur(8px);
+           border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+  header h1 { font-size:18px; font-weight:650; letter-spacing:.2px; }
+  header p { color:var(--muted); font-size:13px; }
+  .btn { background:var(--accent); color:#fff; border:none; border-radius:8px; padding:9px 16px; font-size:14px; cursor:pointer; }
+  .btn:hover { filter:brightness(1.12); }
+
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:18px; padding:28px; max-width:1500px; margin:0 auto; }
+  .card { position:relative; border-radius:12px; overflow:hidden; background:var(--panel); border:1px solid var(--line);
+          aspect-ratio:16/10; cursor:zoom-in; transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+  .card img { width:100%; height:100%; object-fit:cover; object-position:top; display:block; transition:transform .45s ease; }
+  .card:hover { transform:translateY(-4px); border-color:var(--accent); box-shadow:0 18px 40px rgba(0,0,0,.5); z-index:2; }
+  .card:hover img { transform:scale(1.08); }              /* hover zoom */
+  .card span { position:absolute; left:10px; bottom:10px; font-size:12px; padding:3px 9px; border-radius:20px;
+               background:rgba(11,16,32,.78); color:var(--text); opacity:0; transition:opacity .2s; }
+  .card:hover span { opacity:1; }
+
+  /* ---------- lightbox ---------- */
+  #lb { position:fixed; inset:0; z-index:50; background:rgba(5,8,18,.96); display:none; flex-direction:column; }
+  #lb.open { display:flex; }
+  .lb-top { display:flex; justify-content:space-between; align-items:center; padding:12px 20px; color:var(--muted); font-size:14px; }
+  .lb-top .tools { display:flex; gap:8px; }
+  .ico { background:rgba(255,255,255,.08); color:var(--text); border:none; border-radius:8px; min-width:38px; height:38px; font-size:15px; cursor:pointer; padding:0 12px; }
+  .ico:hover { background:rgba(99,102,241,.8); }
+  .lb-stage { flex:1; position:relative; min-height:0; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  #lbImg { max-width:94%; max-height:100%; object-fit:contain; border-radius:8px; cursor:zoom-in;
+           transition:opacity .2s ease, transform .15s ease; box-shadow:0 20px 70px rgba(0,0,0,.6); user-select:none; -webkit-user-drag:none; }
+  #lbImg.zoomed { cursor:zoom-out; transform:scale(2.2); max-width:94%; }
+  .arrow { position:absolute; top:50%; transform:translateY(-50%); width:54px; height:54px; border-radius:50%; border:none;
+           background:rgba(99,102,241,.8); color:#fff; font-size:24px; cursor:pointer; z-index:3; }
+  .arrow:hover { background:var(--accent); }
+  #prev { left:18px; } #next { right:18px; }
+  .lb-strip { display:flex; gap:8px; padding:10px 16px 14px; overflow-x:auto; justify-content:flex-start; }
+  .lb-strip img { height:58px; border-radius:6px; opacity:.45; cursor:pointer; flex:0 0 auto; border:2px solid transparent; transition:opacity .15s; }
+  .lb-strip img:hover { opacity:.8; }
+  .lb-strip img.active { opacity:1; border-color:var(--accent); }
+  .hint { text-align:center; color:var(--muted); font-size:12px; padding-bottom:6px; }
+  @media (max-width:640px){ .arrow{width:42px;height:42px;font-size:18px} .grid{padding:14px;gap:12px} }
 </style>
 </head>
 <body>
+
 <header>
-  <h1>NSU IT Support Center &mdash; Screenshot Gallery</h1>
-  <span>&larr; &rarr; keys to navigate &middot; Space: autoplay &middot; Esc: stop</span>
+  <div>
+    <h1>NSU IT Support Center &mdash; Screenshot Gallery</h1>
+    <p>Hover to zoom &middot; click any screenshot to open the viewer &middot; use &larr; &rarr; keys to move</p>
+  </div>
+  <button class="btn" id="startBtn">&#9654; Start slideshow</button>
 </header>
-<div class="stage">
-  <button class="nav" id="prev" aria-label="Previous">&#10094;</button>
-  <img id="main" alt="Screenshot">
-  <button class="nav" id="next" aria-label="Next">&#10095;</button>
+
+<main class="grid" id="grid"></main>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Screenshot viewer">
+  <div class="lb-top">
+    <span id="count"></span>
+    <div class="tools">
+      <button class="ico" id="play" title="Autoplay (Space)">&#9654; Play</button>
+      <button class="ico" id="zoomBtn" title="Zoom (Z or click image)">&#128269; Zoom</button>
+      <button class="ico" id="fsBtn" title="Fullscreen (F)">&#9974;</button>
+      <button class="ico" id="close" title="Close (Esc)">&#10005;</button>
+    </div>
+  </div>
+  <div class="lb-stage" id="stage">
+    <button class="arrow" id="prev" aria-label="Previous">&#10094;</button>
+    <img id="lbImg" alt="Screenshot">
+    <button class="arrow" id="next" aria-label="Next">&#10095;</button>
+  </div>
+  <div class="hint">&larr; &rarr; navigate &middot; Z zoom &middot; Space autoplay &middot; F fullscreen &middot; Esc close</div>
+  <div class="lb-strip" id="strip"></div>
 </div>
-<div class="bar"><span id="count"></span><button id="play">Autoplay</button></div>
-<div class="strip" id="strip"></div>
 
 <script>
-  // Edit these two values if your files differ
+  /* Edit these if your files differ */
   const TOTAL = 46;
-  const PATH = n => `screenshots/web/${n}.png`;
+  const PATH  = n => `screenshots/web/${n}.png`;
 
-  const main = document.getElementById('main');
-  const strip = document.getElementById('strip');
-  const count = document.getElementById('count');
-  const play = document.getElementById('play');
-  let i = 0, timer = null;
+  const $ = id => document.getElementById(id);
+  const grid = $('grid'), lb = $('lb'), img = $('lbImg'), strip = $('strip'), stage = $('stage');
+  let cur = 0, timer = null, zoomed = false;
 
+  /* build grid + strip */
   for (let n = 1; n <= TOTAL; n++) {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `<img loading="lazy" src="${PATH(n)}" alt="Screenshot ${n}"><span>#${n}</span>`;
+    card.onclick = () => openAt(n - 1);
+    grid.appendChild(card);
+
     const t = document.createElement('img');
-    t.src = PATH(n); t.loading = 'lazy'; t.alt = 'Screenshot ' + n;
-    t.onclick = () => show(n - 1);
+    t.src = PATH(n); t.loading = 'lazy'; t.alt = '';
+    t.onclick = () => { stopPlay(); show(n - 1); };
     strip.appendChild(t);
   }
 
-  function show(idx) {
-    i = (idx + TOTAL) % TOTAL;
-    main.style.opacity = 0;
-    setTimeout(() => { main.src = PATH(i + 1); main.style.opacity = 1; }, 120);
-    count.textContent = `${i + 1} / ${TOTAL}`;
-    [...strip.children].forEach((c, k) => c.classList.toggle('active', k === i));
-    strip.children[i].scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
-    new Image().src = PATH(((i + 1) % TOTAL) + 1); // preload next
-  }
-  const next = () => show(i + 1), prev = () => show(i - 1);
-  function stop() { clearInterval(timer); timer = null; play.textContent = 'Autoplay'; }
-  function toggle() {
-    if (timer) return stop();
-    timer = setInterval(next, 3000); play.textContent = 'Pause';
+  function setZoom(on) {
+    zoomed = on;
+    img.classList.toggle('zoomed', on);
+    img.style.transformOrigin = '50% 50%';
   }
 
-  document.getElementById('next').onclick = () => { stop(); next(); };
-  document.getElementById('prev').onclick = () => { stop(); prev(); };
-  play.onclick = toggle;
+  function show(i) {
+    cur = (i + TOTAL) % TOTAL;
+    setZoom(false);
+    img.style.opacity = 0;
+    const src = PATH(cur + 1);
+    const pre = new Image();
+    pre.onload = () => { img.src = src; img.style.opacity = 1; };
+    pre.src = src;
+    $('count').textContent = `${cur + 1} / ${TOTAL}`;
+    [...strip.children].forEach((c, k) => c.classList.toggle('active', k === cur));
+    strip.children[cur].scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+    history.replaceState(null, '', '#' + (cur + 1));
+    new Image().src = PATH(((cur + 1) % TOTAL) + 1);                 // preload next
+    new Image().src = PATH(((cur - 1 + TOTAL) % TOTAL) + 1);         // preload previous
+  }
+
+  function openAt(i) { lb.classList.add('open'); document.body.style.overflow = 'hidden'; show(i); }
+  function closeLb() {
+    lb.classList.remove('open'); document.body.style.overflow = ''; stopPlay();
+    if (document.fullscreenElement) document.exitFullscreen();
+    history.replaceState(null, '', location.pathname);
+  }
+  const next = () => show(cur + 1), prev = () => show(cur - 1);
+
+  function stopPlay() { clearInterval(timer); timer = null; $('play').innerHTML = '&#9654; Play'; }
+  function togglePlay() {
+    if (timer) return stopPlay();
+    timer = setInterval(next, 2800); $('play').innerHTML = '&#10074;&#10074; Pause';
+  }
+
+  $('next').onclick = () => { stopPlay(); next(); };
+  $('prev').onclick = () => { stopPlay(); prev(); };
+  $('close').onclick = closeLb;
+  $('play').onclick = togglePlay;
+  $('zoomBtn').onclick = () => setZoom(!zoomed);
+  $('fsBtn').onclick = () => document.fullscreenElement ? document.exitFullscreen() : lb.requestFullscreen && lb.requestFullscreen();
+  $('startBtn').onclick = () => { openAt(0); togglePlay(); };
+
+  /* click image = zoom, move mouse = pan while zoomed */
+  img.onclick = e => { if (!zoomed) { setZoom(true); pan(e); } else setZoom(false); };
+  function pan(e) {
+    const r = img.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width) * 100, y = ((e.clientY - r.top) / r.height) * 100;
+    img.style.transformOrigin = `${Math.min(Math.max(x,0),100)}% ${Math.min(Math.max(y,0),100)}%`;
+  }
+  img.addEventListener('mousemove', e => { if (zoomed) pan(e); });
+  stage.addEventListener('click', e => { if (e.target === stage) closeLb(); });
+
+  /* keyboard */
   document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight') { stop(); next(); }
-    else if (e.key === 'ArrowLeft') { stop(); prev(); }
-    else if (e.key === 'Home') show(0);
-    else if (e.key === 'End') show(TOTAL - 1);
-    else if (e.key === ' ') { e.preventDefault(); toggle(); }
-    else if (e.key === 'Escape') stop();
+    if (!lb.classList.contains('open')) return;
+    const k = e.key;
+    if (k === 'ArrowRight') { stopPlay(); next(); }
+    else if (k === 'ArrowLeft') { stopPlay(); prev(); }
+    else if (k === 'Home') show(0);
+    else if (k === 'End') show(TOTAL - 1);
+    else if (k === 'Escape') closeLb();
+    else if (k === ' ') { e.preventDefault(); togglePlay(); }
+    else if (k === 'z' || k === 'Z') setZoom(!zoomed);
+    else if (k === 'f' || k === 'F') $('fsBtn').click();
   });
-  // touch swipe
+
+  /* touch swipe */
   let sx = null;
-  main.addEventListener('touchstart', e => sx = e.touches[0].clientX);
-  main.addEventListener('touchend', e => {
+  stage.addEventListener('touchstart', e => sx = e.touches[0].clientX, { passive: true });
+  stage.addEventListener('touchend', e => {
     if (sx === null) return;
     const dx = e.changedTouches[0].clientX - sx;
-    if (Math.abs(dx) > 40) { stop(); dx < 0 ? next() : prev(); }
+    if (Math.abs(dx) > 40) { stopPlay(); dx < 0 ? next() : prev(); }
     sx = null;
   });
 
-  show(0);
+  /* deep link: gallery.html#12 opens screenshot 12 */
+  const h = parseInt(location.hash.slice(1), 10);
+  if (h >= 1 && h <= TOTAL) openAt(h - 1);
 </script>
 </body>
 </html>
