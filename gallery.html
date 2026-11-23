@@ -3,90 +3,506 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NSU IT Support Center - Gallery</title>
+<title>NSU IT Support Center — Product Showcase</title>
 <style>
-  :root { --bg:#0b1020; --panel:#121935; --accent:#6366f1; --text:#e5e7eb; --muted:#94a3b8; }
-  * { box-sizing:border-box; margin:0; }
-  body { background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-         height:100vh; display:flex; flex-direction:column; overflow:hidden; }
-  header { padding:14px 24px; display:flex; justify-content:space-between; align-items:center; background:var(--panel);
-           border-bottom:1px solid #1f2a52; }
-  header h1 { font-size:16px; font-weight:600; }
-  header span { color:var(--muted); font-size:13px; }
-  .stage { flex:1; position:relative; display:flex; align-items:center; justify-content:center; min-height:0; padding:16px 70px; }
-  .stage img { max-width:100%; max-height:100%; object-fit:contain; border-radius:10px;
-               box-shadow:0 20px 60px rgba(0,0,0,.55); transition:opacity .25s ease; }
-  .nav { position:absolute; top:50%; transform:translateY(-50%); width:48px; height:48px; border-radius:50%;
-         border:none; background:rgba(99,102,241,.85); color:#fff; font-size:22px; cursor:pointer; }
-  .nav:hover { background:var(--accent); }
-  #prev { left:12px; } #next { right:12px; }
-  .bar { display:flex; justify-content:center; gap:16px; align-items:center; padding:8px; color:var(--muted); font-size:13px; }
-  .bar button { background:none; border:1px solid #2a3768; color:var(--text); border-radius:6px; padding:4px 12px; cursor:pointer; }
-  .strip { display:flex; gap:8px; padding:10px 16px 14px; overflow-x:auto; background:var(--panel); border-top:1px solid #1f2a52; }
-  .strip img { height:64px; border-radius:6px; opacity:.5; cursor:pointer; flex:0 0 auto; border:2px solid transparent; }
-  .strip img:hover { opacity:.85; }
-  .strip img.active { opacity:1; border-color:var(--accent); }
+  :root {
+    --bg: #080c1a;
+    --panel: #0f162b;
+    --panel-elevated: #16203d;
+    --border: #1e2b4d;
+    --accent: #6366f1;
+    --accent-glow: rgba(99, 102, 241, 0.35);
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: radial-gradient(circle at 50% 0%, #131c3a 0%, var(--bg) 70%);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  /* Header & Segmented Platform Switcher */
+  header {
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(15, 22, 43, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+    z-index: 10;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .brand-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+  }
+
+  header h1 {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .switcher {
+    display: flex;
+    background: var(--bg);
+    padding: 4px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    gap: 4px;
+  }
+
+  .tab-btn {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    padding: 6px 14px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+  }
+
+  .tab-btn:hover {
+    color: var(--text);
+  }
+
+  .tab-btn.active {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 2px 10px var(--accent-glow);
+  }
+
+  .badge {
+    background: rgba(255, 255, 255, 0.12);
+    padding: 1px 7px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .tab-btn.active .badge {
+    background: rgba(0, 0, 0, 0.25);
+  }
+
+  .shortcuts {
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  /* Main Stage */
+  .stage {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    padding: 20px 80px;
+  }
+
+  /* Dynamic Device Frame */
+  .frame-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    max-height: 100%;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Web Browser Window Chrome */
+  .frame-wrapper.web-mode {
+    flex-direction: column;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+  }
+
+  .browser-bar {
+    width: 100%;
+    height: 32px;
+    background: #0c1224;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    gap: 6px;
+  }
+
+  .browser-bar span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #28355c;
+  }
+
+  .browser-bar span:nth-child(1) { background: #ef4444; opacity: 0.75; }
+  .browser-bar span:nth-child(2) { background: #f59e0b; opacity: 0.75; }
+  .browser-bar span:nth-child(3) { background: #10b981; opacity: 0.75; }
+
+  .browser-url {
+    margin-left: 10px;
+    font-size: 11px;
+    color: var(--muted);
+    background: var(--bg);
+    padding: 2px 12px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+  }
+
+  .frame-wrapper.web-mode img {
+    max-width: calc(100vw - 180px);
+    max-height: calc(100vh - 255px);
+    object-fit: contain;
+    display: block;
+    transition: opacity 0.2s ease;
+  }
+
+  /* Android Mobile Bezel Frame */
+  .frame-wrapper.mobile-mode {
+    background: #070a14;
+    padding: 12px;
+    border-radius: 34px;
+    border: 2px solid #2b3966;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.75), 0 0 30px var(--accent-glow);
+  }
+
+  .frame-wrapper.mobile-mode .browser-bar {
+    display: none;
+  }
+
+  .frame-wrapper.mobile-mode::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #090d1a;
+    border: 1px solid #1e294b;
+    z-index: 3;
+  }
+
+  .frame-wrapper.mobile-mode img {
+    max-height: calc(100vh - 240px);
+    max-width: 90vw;
+    border-radius: 22px;
+    object-fit: contain;
+    display: block;
+    transition: opacity 0.2s ease;
+  }
+
+  /* Navigation Arrows */
+  .nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: rgba(22, 32, 61, 0.85);
+    backdrop-filter: blur(8px);
+    color: var(--text);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 5;
+  }
+
+  .nav:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 20px var(--accent-glow);
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  #prev { left: 18px; }
+  #next { right: 18px; }
+
+  /* Control Bar */
+  .bar {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    align-items: center;
+    padding: 8px 16px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .pill {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .bar button {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 999px;
+    padding: 4px 14px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .bar button:hover {
+    border-color: var(--accent);
+    background: var(--panel-elevated);
+  }
+
+  .bar button.playing {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  /* Thumbnail Filmstrip */
+  .strip {
+    display: flex;
+    gap: 10px;
+    padding: 10px 18px 14px;
+    overflow-x: auto;
+    background: var(--panel);
+    border-top: 1px solid var(--border);
+    scrollbar-width: thin;
+    scrollbar-color: #2a3968 transparent;
+  }
+
+  .strip::-webkit-scrollbar { height: 6px; }
+  .strip::-webkit-scrollbar-thumb { background: #2a3968; border-radius: 3px; }
+
+  .strip img {
+    height: 62px;
+    border-radius: 6px;
+    opacity: 0.45;
+    cursor: pointer;
+    flex: 0 0 auto;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+  .strip img:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+  }
+
+  .strip img.active {
+    opacity: 1;
+    border-color: var(--accent);
+    box-shadow: 0 0 12px var(--accent-glow);
+  }
+
+  @media (max-width: 768px) {
+    header { flex-wrap: wrap; padding: 10px 14px; }
+    .shortcuts { display: none; }
+    .stage { padding: 12px 48px; }
+    .nav { width: 36px; height: 36px; font-size: 15px; }
+    #prev { left: 8px; }
+    #next { right: 8px; }
+  }
 </style>
 </head>
 <body>
+
 <header>
-  <h1>NSU IT Support Center &mdash; Screenshot Gallery</h1>
-  <span>&larr; &rarr; keys to navigate &middot; Space: autoplay &middot; Esc: stop</span>
+  <div class="brand">
+    <div class="brand-dot"></div>
+    <h1>NSU IT Support Center</h1>
+  </div>
+
+  <div class="switcher" role="tablist" aria-label="Platform selector">
+    <button class="tab-btn active" id="tab-web" role="tab" aria-selected="true" onclick="switchPlatform('web')">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+      </svg>
+      Web Platform <span class="badge">46</span>
+    </button>
+    <button class="tab-btn" id="tab-mobile" role="tab" aria-selected="false" onclick="switchPlatform('mobile')">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
+      </svg>
+      Mobile App <span class="badge">28</span>
+    </button>
+  </div>
+
+  <span class="shortcuts">&larr; &rarr; Navigate &middot; Tab: Switch View &middot; Space: Autoplay</span>
 </header>
+
 <div class="stage">
   <button class="nav" id="prev" aria-label="Previous">&#10094;</button>
-  <img id="main" alt="Screenshot">
+
+  <div class="frame-wrapper web-mode" id="frame">
+    <div class="browser-bar">
+      <span></span><span></span><span></span>
+      <div class="browser-url" id="url-label">helpdesk.northsouth.edu</div>
+    </div>
+    <img id="main" alt="Application Screenshot">
+  </div>
+
   <button class="nav" id="next" aria-label="Next">&#10095;</button>
 </div>
-<div class="bar"><span id="count"></span><button id="play">Autoplay</button></div>
+
+<div class="bar">
+  <span class="pill" id="label">Web Portal</span>
+  <span class="pill" id="count">1 / 46</span>
+  <button id="play">Autoplay</button>
+</div>
+
 <div class="strip" id="strip"></div>
 
 <script>
-  // Edit these two values if your files differ
-  const TOTAL = 46;
-  const PATH = n => `screenshots/web/${n}.png`;
+  const PLATFORMS = {
+    web: {
+      total: 46,
+      path: n => `screenshots/web/${n}.png`,
+      label: 'Web Portal',
+      url: 'helpdesk.northsouth.edu',
+      frameClass: 'web-mode'
+    },
+    mobile: {
+      total: 23,
+      path: n => `screenshots/mobile/${n}.jpeg`,
+      label: 'NSU IT Support Center',
+      url: '',
+      frameClass: 'mobile-mode'
+    }
+  };
+
+  let currentMode = 'web';
+  let i = 0;
+  let timer = null;
 
   const main = document.getElementById('main');
+  const frame = document.getElementById('frame');
   const strip = document.getElementById('strip');
   const count = document.getElementById('count');
+  const label = document.getElementById('label');
+  const urlLabel = document.getElementById('url-label');
   const play = document.getElementById('play');
-  let i = 0, timer = null;
 
-  for (let n = 1; n <= TOTAL; n++) {
-    const t = document.createElement('img');
-    t.src = PATH(n); t.loading = 'lazy'; t.alt = 'Screenshot ' + n;
-    t.onclick = () => show(n - 1);
-    strip.appendChild(t);
+  function buildStrip() {
+    strip.innerHTML = '';
+    const cfg = PLATFORMS[currentMode];
+    for (let n = 1; n <= cfg.total; n++) {
+      const t = document.createElement('img');
+      t.src = cfg.path(n);
+      t.loading = 'lazy';
+      t.alt = `${cfg.label} Screenshot ${n}`;
+      t.onclick = () => { stop(); show(n - 1); };
+      strip.appendChild(t);
+    }
   }
 
   function show(idx) {
-    i = (idx + TOTAL) % TOTAL;
+    const cfg = PLATFORMS[currentMode];
+    i = (idx + cfg.total) % cfg.total;
     main.style.opacity = 0;
-    setTimeout(() => { main.src = PATH(i + 1); main.style.opacity = 1; }, 120);
-    count.textContent = `${i + 1} / ${TOTAL}`;
+    setTimeout(() => {
+      main.src = cfg.path(i + 1);
+      main.style.opacity = 1;
+    }, 110);
+
+    count.textContent = `${i + 1} / ${cfg.total}`;
+    label.textContent = `${cfg.label} — Screen #${i + 1}`;
     [...strip.children].forEach((c, k) => c.classList.toggle('active', k === i));
-    strip.children[i].scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
-    new Image().src = PATH(((i + 1) % TOTAL) + 1); // preload next
+    if (strip.children[i]) {
+      strip.children[i].scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+    }
+    new Image().src = cfg.path(((i + 1) % cfg.total) + 1);
   }
-  const next = () => show(i + 1), prev = () => show(i - 1);
-  function stop() { clearInterval(timer); timer = null; play.textContent = 'Autoplay'; }
+
+  function switchPlatform(mode) {
+    if (mode === currentMode) return;
+    stop();
+    currentMode = mode;
+    const cfg = PLATFORMS[mode];
+
+    document.getElementById('tab-web').classList.toggle('active', mode === 'web');
+    document.getElementById('tab-web').setAttribute('aria-selected', mode === 'web');
+    document.getElementById('tab-mobile').classList.toggle('active', mode === 'mobile');
+    document.getElementById('tab-mobile').setAttribute('aria-selected', mode === 'mobile');
+
+    frame.className = `frame-wrapper ${cfg.frameClass}`;
+    if (cfg.url) urlLabel.textContent = cfg.url;
+
+    buildStrip();
+    show(0);
+  }
+
+  const next = () => show(i + 1);
+  const prev = () => show(i - 1);
+
+  function stop() {
+    clearInterval(timer);
+    timer = null;
+    play.textContent = 'Autoplay';
+    play.classList.remove('playing');
+  }
+
   function toggle() {
     if (timer) return stop();
-    timer = setInterval(next, 3000); play.textContent = 'Pause';
+    timer = setInterval(next, 3000);
+    play.textContent = 'Pause';
+    play.classList.add('playing');
   }
 
   document.getElementById('next').onclick = () => { stop(); next(); };
   document.getElementById('prev').onclick = () => { stop(); prev(); };
   play.onclick = toggle;
+
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight') { stop(); next(); }
     else if (e.key === 'ArrowLeft') { stop(); prev(); }
+    else if (e.key === 'Tab') {
+      e.preventDefault();
+      switchPlatform(currentMode === 'web' ? 'mobile' : 'web');
+    }
     else if (e.key === 'Home') show(0);
-    else if (e.key === 'End') show(TOTAL - 1);
+    else if (e.key === 'End') show(PLATFORMS[currentMode].total - 1);
     else if (e.key === ' ') { e.preventDefault(); toggle(); }
     else if (e.key === 'Escape') stop();
   });
-  // touch swipe
+
+  // Touch swipe support
   let sx = null;
   main.addEventListener('touchstart', e => sx = e.touches[0].clientX);
   main.addEventListener('touchend', e => {
@@ -96,6 +512,8 @@
     sx = null;
   });
 
+  // Initialize
+  buildStrip();
   show(0);
 </script>
 </body>
