@@ -108,53 +108,38 @@ The system was developed end-to-end: requirements, database design, modular API 
 
 ## Screenshots
 
+<p align="center">
+  <a href="https://almahmudpias.github.io/NSU-IT-Support-Center-Enterprise-Campus-IT-Operations-Platform/gallery.html">
+    <img src="screenshots/slideshow.gif" width="880" alt="NSU IT Support Center - screenshot slideshow"/>
+  </a>
+</p>
+
 <p align="center"><a href="https://almahmudpias.github.io/NSU-IT-Support-Center-Enterprise-Campus-IT-Operations-Platform/gallery.html"><b>▶ Open interactive gallery</b></a> &nbsp;·&nbsp; <sub>hover to zoom · full-screen viewer · ← → keys</sub></p>
 
 <table align="center">
   <tr>
-    <th align="center">Web Platform</th>
-    <th align="center">Mobile App</th>
+    <td><a href="screenshots/web/1.png"><img src="screenshots/web/1.png" width="140"/></a></td>
+    <td><a href="screenshots/web/2.png"><img src="screenshots/web/2.png" width="140"/></a></td>
+    <td><a href="screenshots/web/3.png"><img src="screenshots/web/3.png" width="140"/></a></td>
+    <td><a href="screenshots/web/4.png"><img src="screenshots/web/4.png" width="140"/></a></td>
+    <td><a href="screenshots/web/5.png"><img src="screenshots/web/5.png" width="140"/></a></td>
+    <td><a href="screenshots/web/6.png"><img src="screenshots/web/6.png" width="140"/></a></td>
   </tr>
+</table>
+
+<table align="center">
   <tr>
-    <td align="center" valign="top">
-      <a href="https://almahmudpias.github.io/NSU-IT-Support-Center-Enterprise-Campus-IT-Operations-Platform/gallery.html">
-        <img src="screenshots/slideshow.gif" width="420" alt="NSU IT Support Center - web screenshot slideshow"/>
-      </a>
-    </td>
-    <td align="center" valign="top">
-      <a href="https://almahmudpias.github.io/NSU-IT-Support-Center-Enterprise-Campus-IT-Operations-Platform/gallery.html">
-        <img src="screenshots/mobile/slideshow.gif" width="210" alt="NSU IT Support Center - mobile screenshot slideshow"/>
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" valign="top">
-      <table>
-        <tr>
-          <td><a href="screenshots/web/1.png"><img src="screenshots/web/1.png" width="65"/></a></td>
-          <td><a href="screenshots/web/2.png"><img src="screenshots/web/2.png" width="65"/></a></td>
-          <td><a href="screenshots/web/3.png"><img src="screenshots/web/3.png" width="65"/></a></td>
-          <td><a href="screenshots/web/4.png"><img src="screenshots/web/4.png" width="65"/></a></td>
-          <td><a href="screenshots/web/5.png"><img src="screenshots/web/5.png" width="65"/></a></td>
-          <td><a href="screenshots/web/6.png"><img src="screenshots/web/6.png" width="65"/></a></td>
-        </tr>
-      </table>
-    </td>
-    <td align="center" valign="top">
-      <table>
-        <tr>
-          <td><a href="screenshots/mobile/1.jpeg"><img src="screenshots/mobile/1.jpeg" width="48"/></a></td>
-          <td><a href="screenshots/mobile/2.jpeg"><img src="screenshots/mobile/2.jpeg" width="48"/></a></td>
-          <td><a href="screenshots/mobile/3.jpeg"><img src="screenshots/mobile/3.jpeg" width="48"/></a></td>
-          <td><a href="screenshots/mobile/4.jpeg"><img src="screenshots/mobile/4.jpeg" width="48"/></a></td>
-        </tr>
-      </table>
-    </td>
+    <td><a href="screenshots/mobile/1.jpeg"><img src="screenshots/mobile/1.jpeg" width="100"/></a></td>
+    <td><a href="screenshots/mobile/2.jpeg"><img src="screenshots/mobile/2.jpeg" width="100"/></a></td>
+    <td><a href="screenshots/mobile/3.jpeg"><img src="screenshots/mobile/3.jpeg" width="100"/></a></td>
+    <td><a href="screenshots/mobile/4.jpeg"><img src="screenshots/mobile/4.jpeg" width="100"/></a></td>
+    <td><a href="screenshots/mobile/5.jpeg"><img src="screenshots/mobile/5.jpeg" width="100"/></a></td>
+    <td><a href="screenshots/mobile/6.jpeg"><img src="screenshots/mobile/6.jpeg" width="100"/></a></td>
   </tr>
 </table>
 
 <details>
-<summary><strong>View all Web screenshots (46)</strong></summary>
+<summary><strong>View all 46 web screenshots</strong></summary>
 
 <p align="center">
   <a href="screenshots/web/1.png"><img src="screenshots/web/1.png" width="180"/></a>
@@ -208,7 +193,7 @@ The system was developed end-to-end: requirements, database design, modular API 
 </details>
 
 <details>
-<summary><strong>View all Mobile screenshots (23)</strong></summary>
+<summary><strong>View all 23 mobile screenshots</strong></summary>
 
 <p align="center">
   <a href="screenshots/mobile/1.jpeg"><img src="screenshots/mobile/1.jpeg" width="140"/></a>
@@ -225,10 +210,10 @@ The system was developed end-to-end: requirements, database design, modular API 
   <a href="screenshots/mobile/12.jpeg"><img src="screenshots/mobile/12.jpeg" width="140"/></a>
   <a href="screenshots/mobile/13.jpeg"><img src="screenshots/mobile/13.jpeg" width="140"/></a>
   <a href="screenshots/mobile/14.jpeg"><img src="screenshots/mobile/14.jpeg" width="140"/></a>
-  <a href="screenshots/mobile/15.jpeg"><img src="screenshots/mobile/15.jpeg" width="180"/></a>
+  <a href="screenshots/mobile/15.jpeg"><img src="screenshots/mobile/15.jpeg" width="140"/></a>
   <a href="screenshots/mobile/16.jpeg"><img src="screenshots/mobile/16.jpeg" width="140"/></a>
   <a href="screenshots/mobile/17.jpeg"><img src="screenshots/mobile/17.jpeg" width="140"/></a>
-  <a href="screenshots/mobile/18.jpeg"><img src="screenshots/mobile/18.jpeg" width="140"/></a>
+  <a href="screenshots/mobile/18.jpeg"><img src="screenshots/mobile/18.jpeg" width="180"/></a>
   <a href="screenshots/mobile/19.jpeg"><img src="screenshots/mobile/19.jpeg" width="140"/></a>
   <a href="screenshots/mobile/20.jpeg"><img src="screenshots/mobile/20.jpeg" width="140"/></a>
   <a href="screenshots/mobile/21.jpeg"><img src="screenshots/mobile/21.jpeg" width="140"/></a>
@@ -237,6 +222,8 @@ The system was developed end-to-end: requirements, database design, modular API 
 </p>
 
 </details>
+
+
 ## Problem
 
 Campus IT support at a university-scale institution involves fundamentally more than logging a complaint and changing a status field.
